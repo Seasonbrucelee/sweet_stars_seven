@@ -12,7 +12,19 @@ class TestController extends AbstractController
     public function index(): Response
     {
         return $this->render('test/index.html.twig', [
-            'controller_name' => 'TestController',
+            'controller_name' => 'Mon TestController',
         ]);
+        //return $this->json(['username' => 'jane.doe']);
+
+    }
+
+    #[Route('/test/{id}', name: 'test_id', methods: ["GET"], requirements: ['id' => '\d+'])]
+    public function test_id($id): Response
+    {
+        return $this->render('test/test.html.twig', [
+            'controller_name' => 'Mon TestController avec id 😎',
+        ]);
+        //return $this->json(['username' => 'jane.doe']);
+
     }
 }
