@@ -16,5 +16,7 @@
         <li>Your controller at <code>C:/xampp/htdocs/symfony6-sweetstars/src/Controller/TestController.php</code></li>
         <li>Your template at <code>C:/xampp/htdocs/symfony6-sweetstars/templates/test/index.html.twig</code></li>
     </ul>
+    <a href="{{ path('app_test') }}">Lien vers test</a>
+    <a href="{{ path('test_id', {id: 13}) }}">Lien vers test_id</a>
 </div>
 {% endblock %}
