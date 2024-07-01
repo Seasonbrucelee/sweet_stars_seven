@@ -19,7 +19,11 @@ class PostController extends AbstractController
     public function post($id): Response
     {
         return $this->render('post/view.html.twig', [
-            'controller_name' => 'PostController',
+            'post' => [
+                'title' => 'Le tiitre de l\'article',
+                'content' => 'Le texte super long des article'
+
+            ],
         ]);
     }
 }
