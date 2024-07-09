@@ -1,5 +1,9 @@
 doctrine:
     dbal:
+    
+        driver: 'pdo_mysql'
+        server_version: 'mariadb-10.4.32' # Spécifiez la version de votre serveur MariaDB
+        charset: utf8mb4
         url: '%env(resolve:DATABASE_URL)%'
 
         # IMPORTANT: You MUST configure your server version,

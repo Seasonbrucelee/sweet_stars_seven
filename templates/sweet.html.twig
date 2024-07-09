@@ -14,6 +14,9 @@
         <link href="{{ asset('stars/css/styles.css') }}" rel="stylesheet" />
     </head>
     <body>
+        {% for message in app.flashes('success') %}
+        <div class="alert alert-success" role="alert">{{ message }}</div>
+        {% endfor %}
         <!-- Navigation-->
        
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -52,6 +55,12 @@
                             </a>
                         </button>
                     </form>
+                    <!-- Bouton Logout-->
+                    {% if app.user %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_logout') }}">Logout</a>
+                        </li>
+                    {% else %}
                     <!--Bouton Login-->
                         <form class="d-flex">
                         <button class="btn btn" type="submit">
@@ -60,7 +69,7 @@
                             </a>
                         </button>
                     </form>
-
+                     {% endif %}
                     <!--Bouton Panier-->
                     <form class="d-flex">
                         <button class="btn btn" type="submit">
@@ -88,7 +97,7 @@
 
         <!-- Footer-->
         <footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
+            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Sweet Stars Seven 2024</p></div>
         </footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>

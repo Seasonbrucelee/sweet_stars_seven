@@ -6,18 +6,82 @@
     {% for flash_error in app.flashes('verify_email_error') %}
         <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
     {% endfor %}
+  
+    <div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="text-center">Register</h3>
+                </div>
+                <div class="card-body">
+                    {{ form_start(registrationForm) }}
+                        <div class="form-group">
+                            {{ form_label(registrationForm.username, 'Username', {'label_attr': {'class': 'col-md-4 col-form-label text-md-right'}}) }}
+                            <div class="col-md-6">
+                                {{ form_widget(registrationForm.username, {'attr': {'class': 'form-control'}}) }}
+                                {{ form_errors(registrationForm.username) }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            {{ form_label(registrationForm.email, 'Email', {'label_attr': {'class': 'col-md-4 col-form-label text-md-right'}}) }}
+                            <div class="col-md-6">
+                                {{ form_widget(registrationForm.email, {'attr': {'class': 'form-control'}}) }}
+                                {{ form_errors(registrationForm.email) }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            {{ form_label(registrationForm.plainPassword, 'Password', {'label_attr': {'class': 'col-md-4 col-form-label text-md-right'}}) }}
+                            <div class="col-md-6">
+                                {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'form-control'}}) }}
+                                {{ form_errors(registrationForm.plainPassword) }}
+                            </div>
+                        </div>
+                        <div class="form-group row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    Register
+                                </button>
+                            </div>
+                        </div>
+                    {{ form_end(registrationForm) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-    <h1>Register</h1>
+    {#{{ form_errors(registrationForm) }}#}
 
-    {{ form_errors(registrationForm) }}
+    {#{{ form_start(registrationForm) }}
+    <div class="form-group">
+        {{ form_label(registrationForm.username) }}
+        {{ form_widget(registrationForm.username, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(registrationForm.username) }}
+    </div>
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
+    <div class="form-group">
+        {{ form_label(registrationForm.email) }}
+        {{ form_widget(registrationForm.email, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(registrationForm.email) }}
+    </div>
+
+     <div class="form-group">
+        {{ form_label(registrationForm.plainPassword) }}
+        {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(registrationForm.plainPassword) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(registrationForm.agreeTerms) }}
+        {{ form_widget(registrationForm.agreeTerms, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(registrationForm.agreeTerms) }}
+    </div>
+     <button type="submit" class="btn btn-primary">Register</button>
+        {#{{ form_row(registrationForm.plainPassword, {
             label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+        }) }}#}
 
-        <button type="submit" class="btn">Register</button>
+    <!--<button type="submit" class="btn">Register</button>-->
     {{ form_end(registrationForm) }}
+
 {% endblock %}
