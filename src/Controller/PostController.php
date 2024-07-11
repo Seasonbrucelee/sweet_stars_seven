@@ -19,8 +19,12 @@ class PostController extends AbstractController
         ]);
     }
     #[Route('/post/{id}', name: 'post_view')]
-    public function post($id): Response
+    public function post(Post $post): Response
     {
+
+        dd($post);
+        # TODO : A afficher sur la vue
+
         return $this->render('post/view.html.twig', [
             'post' => [
                 'title' => 'Shop article',
