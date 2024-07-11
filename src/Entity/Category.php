@@ -7,6 +7,10 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+
+use function PHPUnit\Framework\containsEqual;
+use function PHPUnit\Framework\containsOnly;
+
 #[ORM\Entity(repositoryClass: CategoryRepository::class)]
 class Category
 {
@@ -31,15 +35,15 @@ class Category
     private Collection $categories;
 
     /**
-     * @var Collection<int, Post>
+     * @var Collection<int, Product>
      */
-    #[ORM\OneToMany(targetEntity: Post::class, mappedBy: 'category')]
-    private Collection $posts;
+    #[ORM\OneToMany(targetEntity: Product::class, mappedBy: 'category')]
+    private Collection $products;
 
     public function __construct()
     {
         $this->categories = new ArrayCollection();
-        $this->posts = new ArrayCollection();
+        $this->products = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -117,27 +121,27 @@ class Category
     /**
      * @return Collection<int, Post>
      */
-    public function getPosts(): Collection
+    public function getProducts(): Collection
     {
-        return $this->posts;
+        return $this->products;
     }
 
-    public function addPost(Post $post): static
+    public function addPost(Product $product): static
     {
-        if (!$this->posts->contains($post)) {
-            $this->posts->add($post);
-            $post->setCategory($this);
+        if (!$this->products>containsEqual($product)) {
+            $this->products->add($product);
+            $product->setCategory($this);
         }
 
         return $this;
     }
 
-    public function removePost(Post $post): static
+    public function removeProduct(Product $product): static
     {
-        if ($this->posts->removeElement($post)) {
+        if ($this->products->removeElement($product)) {
             // set the owning side to null (unless already changed)
-            if ($post->getCategory() === $this) {
-                $post->setCategory(null);
+            if ($product->getCategory() === $this) {
+                $product->setCategory(null);
             }
         }
 

@@ -42,14 +42,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private bool $isVerified = false;
 
     /**
-     * @var Collection<int, Post>
+     * @var Collection<int, Product>
      */
-    #[ORM\OneToMany(targetEntity: Post::class, mappedBy: 'user', orphanRemoval: true)]
-    private Collection $posts;
+    #[ORM\OneToMany(targetEntity: Product::class, mappedBy: 'user', orphanRemoval: true)]
+    private Collection $products;
 
     public function __construct()
     {
-        $this->posts = new ArrayCollection();
+        $this->products = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -150,29 +150,29 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @return Collection<int, Post>
+     * @return Collection<int, Product>
      */
-    public function getPosts(): Collection
+    public function getProducts(): Collection
     {
-        return $this->posts;
+        return $this->products;
     }
 
-    public function addPost(Post $post): static
+    public function addProduct(Product $product): static
     {
-        if (!$this->posts->contains($post)) {
-            $this->posts->add($post);
-            $post->setUser($this);
+        if (!$this->products->contains($product)) {
+            $this->products->add($product);
+            $product->setUser($this);
         }
 
         return $this;
     }
 
-    public function removePost(Post $post): static
+    public function removeProducts(Product $product): static
     {
-        if ($this->posts->removeElement($post)) {
+        if ($this->products->removeElement($product)) {
             // set the owning side to null (unless already changed)
-            if ($post->getUser() === $this) {
-                $post->setUser(null);
+            if ($product->getUser() === $this) {
+                $product->setUser(null);
             }
         }
 
