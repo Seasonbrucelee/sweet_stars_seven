@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use App\Entity\Category;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,7 +19,7 @@ class AdminController extends AbstractController
         ]);
     }
    
-    #[Route('/category/add', name:'category_add')]
+    /*#[Route('/category/add', name:'category_add')]
     public function addCategory(Request $request): Response
     {
         //dd($request);
@@ -28,6 +28,6 @@ class AdminController extends AbstractController
         return $this->render('admin/index.html.twig', [
             'controller_name' => 'AddCategory',
         ]);
-    }
-    //voir video du 22 avril 2023 pour la suite
+    }*/
+   
 }
